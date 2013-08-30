@@ -1,4 +1,4 @@
-require_relative "http/clients/mock.rb"
+require 'tire/http/clients/mock'
 
 module Tire
   configure { |c| c.client Tire::HTTP::Client::Mock }
