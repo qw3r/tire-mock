@@ -1,3 +1,4 @@
+require 'tire'
 require 'tire/http/clients/mock'
 
 module Tire

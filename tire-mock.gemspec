@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'tire-mock'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = '2013-08-30'
   s.summary     = "Tire Mock"
   s.description = "A simple HTTP::Client for mocking ElasticSearch responses"
