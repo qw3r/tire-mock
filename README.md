@@ -26,7 +26,9 @@ It's possible to 'mock' different models (```Tire::Mock.set [user, article, post
 
 TODO ideas
 ----------
-
+* add tests
+* travis-ci
+* support the versions of ruby the tire supports
 * "record" the last created/updates document to use as response
 * make "mocking" of  highlighs/facets more simpler, easier
 * etc.
