@@ -1,4 +1,5 @@
 require 'tire'
+require 'tire/mock/version'
 require 'tire/http/clients/mock'
 
 module Tire
@@ -39,17 +40,20 @@ module Tire
       when nil, :all
       when Array
         object.map { |d| response_for d }
-      when Answer, Article, Question, Topic, User
-        {
-          _id: object.tire.index.get_id_from_document(object),
-          _type: object.tire.index.get_type_from_document(object),
-          _source: MultiJson.decode(object.tire.index.convert_document_to_json(object))
-        }
       else
-        raise "don't know how to mock item #{item.inspect}"
+        if object.class.included_modules.include?(Tire::Model::Search) && object.respond_to?(:tire)
+          {
+            _id: object.tire.index.get_id_from_document(object),
+            _type: object.tire.index.get_type_from_document(object),
+            _source: MultiJson.decode(object.tire.index.convert_document_to_json(object))
+          }
+        else
+          raise "don't know how to mock item #{item.inspect}"
+        end
       end
     end
   end
 end
 
+# do setup
 Tire::Mock.reset
